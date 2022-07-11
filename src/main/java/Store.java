@@ -1,6 +1,6 @@
 public class Store {
 
-    private final int SIZECARSHOP = 3;
+    private static final int SIZE_CAR_SHOP = 3;
     private int product = 0;
 
     //метод покупки авто
@@ -19,7 +19,7 @@ public class Store {
 
     //метод производства авто
     public synchronized void put() {
-        while (product >= SIZECARSHOP) {
+        while (product >= SIZE_CAR_SHOP) {
             try {
                 wait();
             } catch (InterruptedException e) {
