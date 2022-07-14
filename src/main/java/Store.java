@@ -6,6 +6,7 @@ public class Store {
     //метод покупки авто
     public synchronized void get(int idBayer) {
         while (product < 1) {
+            System.out.println("Машин нет");
             try {
                 System.out.println("Машин нет");
                 wait();
@@ -14,17 +15,10 @@ public class Store {
         }
         product--;
         System.out.println("Покупатель " + idBayer + " уехал на новеньком авто");
-        notify();
     }
 
     //метод производства авто
     public synchronized void put() {
-        while (product >= SIZE_CAR_SHOP) {
-            try {
-                wait();
-            } catch (InterruptedException e) {
-            }
-        }
         product++;
         System.out.println("Производитель Toyota выпустил 1 авто");
         System.out.println("Машин на складе: " + product);
